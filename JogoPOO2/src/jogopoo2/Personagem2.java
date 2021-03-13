@@ -1,14 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package jogopoo2;
 
-/**
- *
- * @author Victor
- */
-public class Personagem2 {
+
+public class Personagem2 extends Personagem {
+    
+     public Personagem2() {
+        super(new Intermediario(), new Alto(), new Rapido());
+    }
+
     
 }
