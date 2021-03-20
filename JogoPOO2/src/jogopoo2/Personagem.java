@@ -5,6 +5,9 @@ public abstract class Personagem {
    private Pular pulo;
    private Correr corre;
 
+   private int health;
+   private IHealth sttHealth;
+   
     public Atacar getAtaque() {
         return ataque;
     }
@@ -13,6 +16,8 @@ public abstract class Personagem {
         this.ataque = ataque;
         this.pulo = pulo;
         this.corre = corre;
+        this.health = 100;
+        this.sttHealth = new Strong();
     }
 
     public void setAtaque(Atacar ataque) {
@@ -34,6 +39,23 @@ public abstract class Personagem {
     public void setCorre(Correr corre) {
         this.corre = corre;
     }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    public IHealth getSttHealth() {
+        return sttHealth;
+    }
+
+    public void setSttHealth(IHealth sttHealth) {
+        this.sttHealth = sttHealth;
+    }
+    
    
 
 
