@@ -1,24 +1,26 @@
 package jogopoo2;
-        
-public class Npc {
-    
-   private Atacar ataque;
-   private Pular pulo;
-   private Correr corre;
 
-   private int health;
-   private IHealth sttHealth;
-   
+public abstract class Npc {
+
+    private Atacar ataque;
+    private Pular pulo;
+    private Correr corre;
+
+    private int health;
+    private IHealth sttHealth;
+
     public Atacar getAtaque() {
         return ataque;
     }
-
+    
+    public Npc(){}
+    
     public Npc(Atacar ataque, Pular pulo, Correr corre) {
         this.ataque = ataque;
         this.pulo = pulo;
         this.corre = corre;
         this.health = 100;
-        this.sttHealth = new Strong();
+        this.sttHealth = new Strong(this);
     }
 
     public void setAtaque(Atacar ataque) {
@@ -56,13 +58,18 @@ public class Npc {
     public void setSttHealth(IHealth sttHealth) {
         this.sttHealth = sttHealth;
     }
-    
-   
 
-
-public void Atacar(){this.ataque.Atacar();}
-public void Pular(){this.pulo.Pular();}
-public void Correr(){this.corre.Correr();}
-
+    public void Atacar(Npc n) {
+        n.setHealth(n.getHealth()-this.ataque.Atacar());
     }
 
+    public void Pular() {
+        this.pulo.Pular();
+    }
+
+    public void Correr() {
+        this.corre.Correr();
+    }
+
+    public abstract void realoca();
+}
