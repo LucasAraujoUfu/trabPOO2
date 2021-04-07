@@ -1,22 +1,37 @@
 package jogopoo2;
 
-public abstract class Personagem extends Npc implements Subject{
-public Inimigo inimigo;
-    private Handler escudo;
-    public Inimigo getInimigo() {
-        return inimigo;
+import java.util.List;
+import java.util.ArrayList;
+
+public abstract class Personagem extends Npc implements Subject {
+    protected List<Inimigo> inimigo; 
+
+    @Override
+    public void registreObserver(Inimigo in) {
+        this.inimigo.add(in);
     }
 
-    public void setInimigo(Inimigo inimigo) {
-        this.inimigo = inimigo;
+    @Override
+    public void removeObserver(Inimigo in) {
+        this.inimigo.remove(in);
     }
-    
-    
-    public void registreObserver(){}
-    public void removeObserver(){}
-    public void notifyObserver(){}
-   
-    public Personagem(jogopoo2.Atacar ataque, jogopoo2.Pular pulo, jogopoo2.Correr corre) {
-        super(ataque, pulo, corre);
-    }
+
+    @Override
+    public void notifyObserver() {
+        for(Inimigo i: inimigo){
+            i.update();
         }
+    }
+
+    public Personagem(Atacar ataque, Pular pulo, Correr corre) {
+        super(ataque, pulo, corre);
+        this.inimigo = new ArrayList<>();
+    }
+    
+    @Override
+    public void setHealth(int health){
+        super.setHealth(health);
+        super.getSttHealth().doBattle(this);
+        this.notifyObserver();
+    }
+}

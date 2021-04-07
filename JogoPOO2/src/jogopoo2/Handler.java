@@ -12,5 +12,13 @@ public abstract class Handler {
         this.handler = handler;
     }
    
+    public void addHandler(Handler h){
+        if(this.handler==null) this.handler = h;
+        else this.handler.addHandler(h);
+    }
     
+    public Handler removeFirstHandler(){
+        if(this.handler==null)return null;
+        else return this.handler;
+    }
 }
