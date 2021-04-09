@@ -2,7 +2,7 @@ package jogopoo2;
 
 public abstract class Npc {
 
-    private Atacar ataque;
+    private Component ataque;
     private Pular pulo;
     private Correr corre;
 
@@ -10,13 +10,13 @@ public abstract class Npc {
     private IHealth sttHealth;
     private Handler escudo;
     
-    public Atacar getAtaque() {
+    public Component getAtaque() {
         return ataque;
     }
     
     public Npc(){}
     
-    public Npc(Atacar ataque, Pular pulo, Correr corre) {
+    public Npc(Component ataque, Pular pulo, Correr corre) {
         this.ataque = ataque;
         this.pulo = pulo;
         this.corre = corre;
@@ -25,7 +25,7 @@ public abstract class Npc {
         this.escudo = null;
     }
 
-    public void setAtaque(Atacar ataque) {
+    public void setAtaque(Component ataque) {
         this.ataque = ataque;
     }
 
