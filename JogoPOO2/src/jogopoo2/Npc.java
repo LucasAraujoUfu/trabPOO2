@@ -84,6 +84,18 @@ public abstract class Npc {
     public void removeEscudo(){
         this.escudo = this.escudo.removeFirstHandler();
     }
+    
+    public void addFireball(){
+        this.ataque = new FireBall(this.ataque);
+    }
+    
+    public void addIcepwd(){
+        this.ataque = new IcePwd(this.ataque);
+    }
+    
+    public void addThunder(){
+        this.ataque = new Thunder(this.ataque);
+    }
 
     public abstract void realoca();
 }

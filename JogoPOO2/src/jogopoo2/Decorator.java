@@ -3,6 +3,10 @@ package jogopoo2;
 public abstract class Decorator implements Component{
 private Component cp; 
 
+    Decorator(Component c){
+       this.cp = c;
+    }
+
     public Component getCp() {
         return cp;
     }

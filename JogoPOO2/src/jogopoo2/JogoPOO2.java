@@ -22,6 +22,16 @@ public class JogoPOO2 {
         
         p[0].Atacar(p[1]);
         System.out.println(p[1].getHealth());
+        
+        p[1].addFireball();
+        
+        p[1].Atacar(p[0]);
+        System.out.println(p[0].getHealth());
+        
+        p[1].addIcepwd();
+        
+        p[1].Atacar(p[0]);
+        System.out.println(p[0].getHealth());
     }
     
 }
