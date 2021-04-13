@@ -7,7 +7,7 @@ public abstract class Personagem extends Npc implements Subject {
     protected List<Inimigo> inimigo; 
 
     @Override
-    public void registreObserver(Inimigo in) {
+    public void registerObserver(Inimigo in) {
         this.inimigo.add(in);
     }
 
@@ -19,7 +19,7 @@ public abstract class Personagem extends Npc implements Subject {
     @Override
     public void notifyObserver() {
         for(Inimigo i: inimigo){
-            i.update();
+            i.update(this);
         }
     }
 
@@ -32,6 +32,12 @@ public abstract class Personagem extends Npc implements Subject {
     public void setHealth(int health){
         super.setHealth(health);
         super.getSttHealth().doBattle(this);
+    }
+
+    @Override
+    public void Correr() {
+        super.Correr();
         this.notifyObserver();
     }
+    
 }

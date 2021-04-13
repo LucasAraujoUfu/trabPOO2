@@ -5,7 +5,7 @@ public class Danger implements IHealth {
     Danger(Npc n){
         n.setAtaque(new Fraco());
         n.setCorre(new Devagar());
-        n.setPulo(new Baixo());
+        //n.setPulo(new Baixo());
     }
     
     @Override

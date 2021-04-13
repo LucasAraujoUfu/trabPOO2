@@ -2,6 +2,9 @@ package jogopoo2;
 
 public class Escudo extends Handler{
 
+    public Escudo() {
+    }
+
     @Override
     public int handlerRequest(int dano) {
         if(dano<=0){
