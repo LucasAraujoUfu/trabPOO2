@@ -5,23 +5,20 @@ import java.util.Random;
 public abstract class SimpleFactory {
 
     public abstract Personagem fabricar();
-    public Personagem randomFabric(){
+
+    public Personagem randomFabric() {
         Random random = new Random();
         double N = random.nextDouble();
         SimpleFactory simpleFactory = null;
-        if(N<=0.2){
+        if (N <= 0.2) {
             simpleFactory = new FabricaP1();
-        }
-        else if(N <= 0.4){
+        } else if (N <= 0.4) {
             simpleFactory = new FabricaP2();
-        }
-        else if(N <=0.6){
+        } else if (N <= 0.6) {
             simpleFactory = new FabricaP3();
-        }
-        else if(N<=0.8){
+        } else if (N <= 0.8) {
             simpleFactory = new FabricaP4();
-        }
-        else {
+        } else {
             simpleFactory = new FabricaP5();
         }
 
