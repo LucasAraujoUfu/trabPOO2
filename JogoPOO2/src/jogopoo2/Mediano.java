@@ -2,6 +2,8 @@ package jogopoo2;
 
 public class Mediano implements IHealth {
 
+    private static Mediano mediano;
+
     Mediano(Npc n){
         n.realoca();
     }
@@ -9,13 +11,23 @@ public class Mediano implements IHealth {
     @Override
     public void doBattle(Personagem p) {
         if (p.getHealth() > 70) {
-            p.setSttHealth(new Strong(p));
+            p.setSttHealth(Strong.getInstace());
 
         } else if (p.getHealth() <= 0) {
-            p.setSttHealth(new Morto());
+            p.setSttHealth(Morto.getInstace());
 
         } else if (p.getHealth() <= 30) {
-            p.setSttHealth(new Danger(p));
+            p.setSttHealth(Danger.getInstace());
         }
+    }
+
+    public static synchronized Mediano getInstace(){
+        if(mediano == null){
+            mediano = new Mediano();
+        }
+        return mediano;
+    }
+
+    private Mediano() {
     }
 }

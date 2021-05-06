@@ -3,7 +3,7 @@ package jogopoo2;
 public class JogoPOO2 {
 
     public static void main(String[] args) {
-        /*Personagem[] p = new Personagem[3];
+        Personagem[] p = new Personagem[3];
         p[0] = new Personagem1();
         p[1] = new Personagem2();
         p[2] = new Personagem3();
@@ -93,9 +93,9 @@ public class JogoPOO2 {
         p[1].addThunder();
         p[1].Atacar(p[0]);
         System.out.println(p[0].getHealth());
-*/
+
         Personagem[] boneco = new Personagem[5];
-        SimpleFactory sf = new FabricaP1();
+        SimpleFactory sf = FabricaP1.getInstace();
         boneco[0] = sf.randomFabric();
         boneco[1] = sf.randomFabric();
         boneco[2] = sf.randomFabric();

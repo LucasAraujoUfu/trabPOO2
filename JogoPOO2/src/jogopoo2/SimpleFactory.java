@@ -11,15 +11,15 @@ public abstract class SimpleFactory {
         double N = random.nextDouble();
         SimpleFactory simpleFactory = null;
         if (N <= 0.2) {
-            simpleFactory = new FabricaP1();
+            simpleFactory = FabricaP1.getInstace();
         } else if (N <= 0.4) {
-            simpleFactory = new FabricaP2();
+            simpleFactory = FabricaP2.getInstace();
         } else if (N <= 0.6) {
-            simpleFactory = new FabricaP3();
+            simpleFactory = FabricaP3.getInstace();
         } else if (N <= 0.8) {
-            simpleFactory = new FabricaP4();
+            simpleFactory = FabricaP4.getInstace();
         } else {
-            simpleFactory = new FabricaP5();
+            simpleFactory = FabricaP5.getInstace();
         }
 
         return simpleFactory.fabricar();

@@ -3,6 +3,8 @@ package jogopoo2;
 import java.util.Random;
 
 public class AdvancedFactory extends SimpleFactory{
+
+    private static AdvancedFactory advancedFactory;
     @Override
     public Personagem fabricar() {
         return null;
@@ -39,6 +41,17 @@ public class AdvancedFactory extends SimpleFactory{
             return personagem3;
         }
         return null;
+    }
+
+    public static synchronized AdvancedFactory getInstace(){
+        if(advancedFactory == null){
+            advancedFactory = new AdvancedFactory();
+        }
+        return advancedFactory;
+    }
+
+    private AdvancedFactory() {
+
     }
 }
 

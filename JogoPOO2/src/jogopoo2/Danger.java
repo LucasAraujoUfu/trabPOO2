@@ -1,7 +1,9 @@
 package jogopoo2;
 
 public class Danger implements IHealth {
-    
+
+    private static Danger danger;
+
     Danger(Npc n){
         n.setAtaque(new Fraco());
         n.setCorre(new Devagar());
@@ -11,15 +13,26 @@ public class Danger implements IHealth {
     @Override
     public void doBattle(Personagem p) {
         if (p.getHealth() > 70) {
-            p.setSttHealth(new Strong(p));
+            p.setSttHealth(Strong.getInstace());
 
         } else if (p.getHealth() > 30) {
-            p.setSttHealth(new Mediano(p));
+            p.setSttHealth(Mediano.getInstace());
 
         } else if (p.getHealth() <= 0) {
-            p.setSttHealth(new Morto());
+            p.setSttHealth(Morto.getInstace());
         }
 
+    }
+
+    public static synchronized Danger getInstace(){
+        if(danger == null){
+            danger = new Danger();
+        }
+        return danger;
+    }
+
+
+    private Danger() {
     }
 
 }
