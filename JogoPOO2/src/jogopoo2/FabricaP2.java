@@ -8,7 +8,7 @@ public class FabricaP2 extends SimpleFactory{
         return new Personagem2();
     }
 
-    public static synchronized FabricaP2 getInstace(){
+    public static synchronized FabricaP2 getInstacia(){
         if(advancedFactory == null){
             advancedFactory = new FabricaP2();
         }

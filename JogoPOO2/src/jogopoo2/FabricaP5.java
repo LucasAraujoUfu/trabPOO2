@@ -10,7 +10,7 @@ public class FabricaP5 extends SimpleFactory{
         return personagem3;
     }
 
-    public static synchronized FabricaP5 getInstace(){
+    public static synchronized FabricaP5 getInstacia(){
         if(advancedFactory == null){
             advancedFactory = new FabricaP5();
         }

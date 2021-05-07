@@ -95,7 +95,7 @@ public class JogoPOO2 {
         System.out.println(p[0].getHealth());
 
         Personagem[] boneco = new Personagem[5];
-        SimpleFactory sf = FabricaP1.getInstace();
+        SimpleFactory sf = FabricaP1.getInstacia();
         boneco[0] = sf.randomFabric();
         boneco[1] = sf.randomFabric();
         boneco[2] = sf.randomFabric();
