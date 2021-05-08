@@ -21,4 +21,9 @@ public abstract class Handler {
         if(this.handler==null)return null;
         else return this.handler;
     }
+
+    public Handler() {
+        this.handler = null;
+    }
+    
 }

@@ -12,5 +12,5 @@ public abstract class AbstractFactory {
     
     public abstract Personagem createPersonagem(int n);
     public abstract Escudo createEscudo();
-    public abstract Inimigo createInimigo();
+    public abstract Inimigo createInimigo(int n);
 }

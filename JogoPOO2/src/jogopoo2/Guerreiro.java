@@ -5,7 +5,7 @@ public class Guerreiro extends Personagem {
     public void realoca() {
     }
 
-    public Guerreiro(jogopoo2.Atacar ataque, jogopoo2.Pular pulo, jogopoo2.Correr corre) {
+    public Guerreiro(Atacar ataque, Pular pulo, Correr corre) {
         super(ataque, pulo, corre);
     }
     

@@ -16,27 +16,25 @@ public class FactoryFuturista extends AbstractFactory {
 
     @Override
     public Personagem createPersonagem(int n) {
-        if (n == 1) {
-            this.setSf(FabricaP1.getInstacia());
-        } else if (n == 2) {
-            this.setSf(FabricaP2.getInstacia());
-        } else if (n == 3) {
-            this.setSf(FabricaP3.getInstacia());
-        } else if (n == 4) {
-            this.setSf(FabricaP4.getInstacia());
-        } else if (n == 5) {
-            this.setSf(FabricaP5.getInstacia());
-        }
-        return this.getSf().fabricar();
+        return RoboFactory.getInstancia().fabricar();
     }
 
     @Override
     public Escudo createEscudo() {
-        return null;
+        CampoDeForca Cf = new CampoDeForca();
+        return Cf;
     }
 
     @Override
-    public Inimigo createInimigo() {
-        return null;
+    public Inimigo createInimigo(int n) {
+        if (n == 0) {
+            return new Inimigo();
+        } else if (n == 1) {
+            return new Inimigo1();
+        } else if (n == 2) {
+            return new Inimigo2();
+        } else {
+            return new Inimigo3();
+        }
     }
 }
