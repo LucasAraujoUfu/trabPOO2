@@ -1,32 +1,41 @@
 package jogopoo2;
-public class FactoryMedieval extends AbstractFactory{
 
+public class FactoryMedieval extends AbstractFactory {
+
+    private static FactoryMedieval fm;
+    
+    public static synchronized FactoryMedieval getInstancia() {
+        if (fm == null) {
+            fm = new FactoryMedieval();
+        }
+        return fm;
+    }
+
+    private FactoryMedieval() {
+    }
+    
     @Override
-    public Personagem createPersonagem(int n) {
-       return null; // Cabamo AQUI!!! Dia 06/05/21 Tarb 07 Lucas e Victor
+    public Personagem createPersonagem() {
+        return FabricaGuerreiro.getInstancia().fabricar();
     }
 
     @Override
     public Escudo createEscudo() {
-           Escudo Escd = new Escudo();
+        Escudo Escd = new Escudo();
         return Escd;
     }
-    
 
     @Override
     public Inimigo createInimigo(int n) {
-        if(n==0){
+        if (n == 0) {
             return new Inimigo();
-        }
-        else if(n==1){
+        } else if (n == 1) {
             return new Inimigo1();
-        }
-        else if(n==2){
+        } else if (n == 2) {
             return new Inimigo2();
-        }
-        else{
+        } else {
             return new Inimigo3();
         }
     }
-    
+
 }

@@ -1,5 +1,7 @@
 package jogopoo2;
+
 public abstract class AbstractFactory {
+
     private SimpleFactory sf;
 
     public SimpleFactory getSf() {
@@ -9,8 +11,10 @@ public abstract class AbstractFactory {
     public void setSf(SimpleFactory sf) {
         this.sf = sf;
     }
-    
-    public abstract Personagem createPersonagem(int n);
+
+    public abstract Personagem createPersonagem();
+
     public abstract Escudo createEscudo();
+
     public abstract Inimigo createInimigo(int n);
 }

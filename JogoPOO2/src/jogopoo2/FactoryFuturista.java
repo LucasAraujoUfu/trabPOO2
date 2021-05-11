@@ -7,15 +7,16 @@ public class FactoryFuturista extends AbstractFactory {
     private FactoryFuturista() {
     }
 
-    public static FactoryFuturista getInstancia() {
+    public static synchronized FactoryFuturista getInstancia() {
         if (ff == null) {
             ff = new FactoryFuturista();
         }
         return ff;
     }
+    
 
     @Override
-    public Personagem createPersonagem(int n) {
+    public Personagem createPersonagem() {
         return RoboFactory.getInstancia().fabricar();
     }
 
