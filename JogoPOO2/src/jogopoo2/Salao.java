@@ -16,10 +16,35 @@ public class Salao implements Fase {
         }
         if (next2 != null) {
             next.add(next2);
-        }   
+        }
     }
-    public Salao(int inimigo, int deslocamneto, String nome, Fase next1){
-        this(inimigo, deslocamneto, nome, next1 , null);
+
+    public List<Fase> getNext() {
+        return next;
+    }
+
+    public void setNext(List<Fase> next) {
+        this.next = next;
+    }
+
+    public Personagem getJogador() {
+        return jogador;
+    }
+
+    public void setJogador(Personagem jogador) {
+        this.jogador = jogador;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Salao(int inimigo, int deslocamneto, String nome, Fase next1) {
+        this(inimigo, deslocamneto, nome, next1, null);
     }
     private List<Fase> next;
     private Personagem jogador;

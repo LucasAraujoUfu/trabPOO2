@@ -3,7 +3,7 @@ package jogopoo2;
 public class JogoPOO2 {
 
     public static void main(String[] args) {
-/*        Personagem[] p = new Personagem[3];
+        /*        Personagem[] p = new Personagem[3];
         p[0] = new Personagem1();
         p[1] = new Personagem2();
         p[2] = new Personagem3();
@@ -104,10 +104,11 @@ public class JogoPOO2 {
 
         for (int i = 0; i < 5; i++) {
             System.out.println(boneco[i].getClass() + " " + boneco[i].getAtaque().getClass());
-        }*/
+        }
         Personagem guerreiro = FactoryMedieval.getInstancia().createPersonagem();
         Personagem robo = FactoryFuturista.getInstancia().createPersonagem();
         System.out.println(guerreiro.getClass());
-        System.out.println(robo.getClass());
+        System.out.println(robo.getClass());*/
+        Front f = new Front();
     }
 }

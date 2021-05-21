@@ -2,17 +2,23 @@ package jogopoo2;
 
 import java.util.Random;
 
-public class Inimigo extends Npc implements Observer{
+public class Inimigo extends Npc implements Observer {
 
-    public Inimigo(){
-        super();
+    private int deslocamento;
+
+    public Inimigo(int deslocamento) {
+        this.deslocamento = deslocamento;
     }
     
+    public Inimigo() {
+        super();
+    }
+
     public Inimigo(Atacar ataque, Pular pulo, Correr corre) {
         super(ataque, pulo, corre);
     }
-    
-    public Inimigo(Component ataque){
+
+    public Inimigo(Component ataque) {
         super();
         super.setAtaque(ataque);
     }
@@ -20,23 +26,23 @@ public class Inimigo extends Npc implements Observer{
     @Override
     public void update(Personagem p) {
         this.Atacar(p);
-        Random r = new Random();
-        if(this.getX()>p.getX()){
-            this.setX(this.getX()-Math.abs(r.nextInt()%3));
+        if(p.getX()>this.getX()){
+           this.setX(this.getX()+deslocamento);
         }
-        else if(this.getX()<p.getX()){
-            this.setX(this.getX()+Math.abs(r.nextInt()%3));
+        else if(p.getX()<this.getX()){
+           this.setX(this.getX()-deslocamento);
         }
-        if(this.getY()>p.getY()){
-            this.setY(this.getY()-Math.abs(r.nextInt()%3));
+        if(p.getY()>this.getY()){
+           this.setY(this.getY()+deslocamento);
         }
-        else if(this.getX()<p.getX()){
-            this.setY(this.getY()+Math.abs(r.nextInt()%3));
+        else if(p.getY()<this.getY()){
+           this.setY(this.getY()-deslocamento);
         }
         this.Atacar(p);
     }
 
     @Override
-    public void realoca() {}
-   
+    public void realoca() {
+    }
+
 }

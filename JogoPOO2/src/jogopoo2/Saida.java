@@ -12,6 +12,23 @@ public class Saida implements Fase {
         this.nome = nome;
 
     }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Personagem getJogador() {
+        return jogador;
+    }
+
+    public void setJogador(Personagem jogador) {
+        this.jogador = jogador;
+    }
+
     private String nome;
 
     private Personagem jogador;

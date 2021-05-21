@@ -6,7 +6,7 @@ public abstract class Npc {
 
     private int x;
     private int y;
-    
+
     private Component ataque;
     private Pular pulo;
     private Correr corre;
@@ -14,12 +14,12 @@ public abstract class Npc {
     private int health;
     private IHealth sttHealth;
     private Handler escudo;
-    
+
     public Component getAtaque() {
         return ataque;
     }
-    
-    public Npc(){
+
+    public Npc() {
         Random ram = new Random();
         this.health = 70;
         this.ataque = new Intermediario();
@@ -27,10 +27,10 @@ public abstract class Npc {
         this.corre = new Normal();
         this.sttHealth = new Mediano(this);
         this.escudo = null;
-        this.x = ram.nextInt()%10;
-        this.y = ram.nextInt()%10;
+        this.x = ram.nextInt() % 10;
+        this.y = ram.nextInt() % 10;
     }
-    
+
     public Npc(Component ataque, Pular pulo, Correr corre) {
         Random ram = new Random();
         this.ataque = ataque;
@@ -39,8 +39,8 @@ public abstract class Npc {
         this.health = 70;
         this.sttHealth = new Mediano(this);
         this.escudo = null;
-        this.x = ram.nextInt()%10;
-        this.y = ram.nextInt()%10;
+        this.x = ram.nextInt() % 10;
+        this.y = ram.nextInt() % 10;
     }
 
     public int getX() {
@@ -48,7 +48,7 @@ public abstract class Npc {
     }
 
     public void setX(int x) {
-        this.x = x;
+        this.x = Math.max(Math.min(x, 10), 0);
     }
 
     public int getY() {
@@ -56,7 +56,7 @@ public abstract class Npc {
     }
 
     public void setY(int y) {
-        this.y = y;
+        this.y = Math.max(Math.min(y, 10), 0);
     }
 
     public Handler getEscudo() {
@@ -104,12 +104,13 @@ public abstract class Npc {
     }
 
     public void Atacar(Npc n) {
-        double dis = Math.sqrt(Math.pow(x-n.x, 2)+Math.pow(y-n.y, 2));
-        if(dis<=1){
-            if(n.escudo==null)
-                n.setHealth(Math.max(n.getHealth()-this.ataque.Atacar(),0));
-            else
-                n.setHealth(Math.max(n.getHealth()-n.escudo.handlerRequest(this.ataque.Atacar()),0));
+        double dis = Math.sqrt(Math.pow(x - n.x, 2) + Math.pow(y - n.y, 2));
+        if (dis <= 1) {
+            if (n.escudo == null) {
+                n.setHealth(Math.max(n.getHealth() - this.ataque.Atacar(), 0));
+            } else {
+                n.setHealth(Math.max(n.getHealth() - n.escudo.handlerRequest(this.ataque.Atacar()), 0));
+            }
         }
     }
 
@@ -120,35 +121,41 @@ public abstract class Npc {
     public void Correr() {
         this.corre.Correr(this);
     }
-    
-    public void addEscudo(){
-        if(this.escudo==null)this.escudo = new Escudo();
-        else this.escudo.addHandler(new Escudo());
+
+    public void addEscudo() {
+        if (this.escudo == null) {
+            this.escudo = new Escudo();
+        } else {
+            this.escudo.addHandler(new Escudo());
+        }
     }
-    
-    public void addEscudo(int def){
-        if(this.escudo==null)this.escudo = new EscudoPerso(def);
-        else this.escudo.addHandler(new EscudoPerso(def));
+
+    public void addEscudo(int def) {
+        if (this.escudo == null) {
+            this.escudo = new EscudoPerso(def);
+        } else {
+            this.escudo.addHandler(new EscudoPerso(def));
+        }
     }
-    
-    public void removeEscudo(){
+
+    public void removeEscudo() {
         this.escudo = this.escudo.removeFirstHandler();
     }
-    
-    public void addFireball(){
+
+    public void addFireball() {
         this.ataque = new FireBall(this.ataque);
     }
-    
-    public void addIcepwd(){
+
+    public void addIcepwd() {
         this.ataque = new IcePwd(this.ataque);
     }
-    
-    public void addThunder(){
+
+    public void addThunder() {
         this.ataque = new Thunder(this.ataque);
     }
-    
-    public void ganharLife(int n){
-        this.setHealth(Math.min(this.health+n,100));
+
+    public void ganharLife(int n) {
+        this.setHealth(Math.min(this.health + n, 100));
     }
 
     public abstract void realoca();
