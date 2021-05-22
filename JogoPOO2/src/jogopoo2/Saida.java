@@ -5,11 +5,11 @@ import java.util.List;
 
 public class Saida implements Fase {
 
-    public Saida(Personagem j, int inimigo, int deslocamneto, String nome) {
+    public Saida(Personagem j, int inimigo, int deslocamento, String nome) {
         jogador=j;
         for (int i = 0; i < inimigo; i++) {
-            jogador.registerObserver(new Inimigo());
-        }
+            jogador.registerObserver(new Inimigo(deslocamento));
+        }   
         this.nome = nome;
 
     }

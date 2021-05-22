@@ -43,16 +43,17 @@ public class Front extends JPanel {
                 p.setY(p.getY() + 10);
             }
 
-            /*if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-                p.chuta(bola);
-            }*/
+            if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+                for (Inimigo i : p.getInimigo()) {
+                    p.Atacar(i);
+                }
+            }
         }
 
         @Override
         public void keyReleased(KeyEvent e) {
 
         }
-
     }
 
     public void paint(Graphics g) {
@@ -62,9 +63,14 @@ public class Front extends JPanel {
         Graphics2D g2d = (Graphics2D) g;
 
         for (Inimigo i : p.getInimigo()) {
-            g2d.setColor(Color.RED);
-            g2d.fillOval(i.getX(), i.getY(), 20, 20);
-
+            if (i.getSttHealth().getClass() != Morto.class) {
+                g2d.setColor(Color.RED);
+                g2d.fillOval(i.getX(), i.getY(), 20, 20);
+            }
+        }
+        if (p.getSttHealth().getClass() != Morto.class) {
+            g2d.setColor(Color.BLUE);
+            g2d.fillOval(p.getX(), p.getY(), 20, 20);
         }
 
     }
@@ -76,8 +82,6 @@ public class Front extends JPanel {
     public void setFase(Fase fase) {
         this.fase = fase;
     }
-    
-    
 
     public void jogar(Front game) throws InterruptedException {
         int x = 1024;
@@ -97,7 +101,6 @@ public class Front extends JPanel {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //Fase head = new Salao(1, 8, "Fase 1", new Saida(5, 10, "Fase 2"), new Saida(7, 8, "Fase 3"));
-
         Personagem p = fase.getJogador();
 
         while (true) {
