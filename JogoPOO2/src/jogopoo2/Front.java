@@ -69,6 +69,16 @@ public class Front extends JPanel {
 
     }
 
+    public Fase getFase() {
+        return fase;
+    }
+
+    public void setFase(Fase fase) {
+        this.fase = fase;
+    }
+    
+    
+
     public void jogar(Front game) throws InterruptedException {
         int x = 1024;
         int y = 768;
@@ -86,7 +96,7 @@ public class Front extends JPanel {
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        Fase head = new Salao(1, 8, "Fase 1", new Saida(5, 10, "Fase 2"), new Saida(7, 8, "Fase 3"));
+        //Fase head = new Salao(1, 8, "Fase 1", new Saida(5, 10, "Fase 2"), new Saida(7, 8, "Fase 3"));
 
         Personagem p = fase.getJogador();
 

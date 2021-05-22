@@ -1,5 +1,8 @@
 package jogopoo2;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class JogoPOO2 {
 
     public static void main(String[] args) {
@@ -110,5 +113,13 @@ public class JogoPOO2 {
         System.out.println(guerreiro.getClass());
         System.out.println(robo.getClass());*/
         Front f = new Front();
+        Personagem p = FactoryMedieval.getInstancia().createPersonagem();
+        Fase head = new Salao(p,1, 8, "Fase 1", new Saida(p,5, 10, "Fase 2"), new Saida(p,7, 8, "Fase 3"));
+        f.setFase(head);
+        try {
+            f.jogar(f);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(JogoPOO2.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

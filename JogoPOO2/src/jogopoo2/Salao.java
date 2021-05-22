@@ -5,7 +5,8 @@ import java.util.List;
 
 public class Salao implements Fase {
 
-    public Salao(int inimigo, int deslocamneto, String nome, Fase next1, Fase next2) {
+    public Salao(Personagem j,int inimigo, int deslocamneto, String nome, Fase next1, Fase next2) {
+        jogador = j;
         next = new ArrayList<>();
         for (int i = 0; i < inimigo; i++) {
             jogador.registerObserver(new Inimigo());
@@ -43,8 +44,8 @@ public class Salao implements Fase {
         this.nome = nome;
     }
 
-    public Salao(int inimigo, int deslocamneto, String nome, Fase next1) {
-        this(inimigo, deslocamneto, nome, next1, null);
+    public Salao(Personagem p,int inimigo, int deslocamneto, String nome, Fase next1) {
+        this(p,inimigo, deslocamneto, nome, next1, null);
     }
     private List<Fase> next;
     private Personagem jogador;

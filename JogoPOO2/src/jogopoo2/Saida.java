@@ -5,7 +5,8 @@ import java.util.List;
 
 public class Saida implements Fase {
 
-    public Saida(int inimigo, int deslocamneto, String nome) {
+    public Saida(Personagem j, int inimigo, int deslocamneto, String nome) {
+        jogador=j;
         for (int i = 0; i < inimigo; i++) {
             jogador.registerObserver(new Inimigo());
         }

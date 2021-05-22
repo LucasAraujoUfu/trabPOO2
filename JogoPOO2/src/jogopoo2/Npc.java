@@ -27,8 +27,8 @@ public abstract class Npc {
         this.corre = new Normal();
         this.sttHealth = new Mediano(this);
         this.escudo = null;
-        this.x = ram.nextInt() % 10;
-        this.y = ram.nextInt() % 10;
+        this.x = ram.nextInt() % 1024;
+        this.y = ram.nextInt() % 768;
     }
 
     public Npc(Component ataque, Pular pulo, Correr corre) {
@@ -39,8 +39,8 @@ public abstract class Npc {
         this.health = 70;
         this.sttHealth = new Mediano(this);
         this.escudo = null;
-        this.x = ram.nextInt() % 10;
-        this.y = ram.nextInt() % 10;
+        this.x = ram.nextInt() % 1024;
+        this.y = ram.nextInt() % 786;
     }
 
     public int getX() {
@@ -48,7 +48,7 @@ public abstract class Npc {
     }
 
     public void setX(int x) {
-        this.x = Math.max(Math.min(x, 10), 0);
+        this.x = Math.max(Math.min(x, 1024), 0);
     }
 
     public int getY() {
@@ -56,7 +56,7 @@ public abstract class Npc {
     }
 
     public void setY(int y) {
-        this.y = Math.max(Math.min(y, 10), 0);
+        this.y = Math.max(Math.min(y, 786), 0);
     }
 
     public Handler getEscudo() {
