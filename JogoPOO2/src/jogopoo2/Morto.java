@@ -5,7 +5,7 @@ public class Morto implements IHealth {
     private static Morto morto;
 
     @Override
-    public void doBattle(Personagem p) {
+    public void doBattle(Npc p) {
 
     }
 

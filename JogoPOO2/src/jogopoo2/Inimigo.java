@@ -10,6 +10,17 @@ public class Inimigo extends Npc implements Observer {
         this.deslocamento = deslocamento;
     }
     
+    public void Atacar(Npc n) {
+        double dis = Math.sqrt(Math.pow(this.getX() - n.getX(), 2) + Math.pow(this.getY() - n.getY(), 2));
+        if (dis <= 5) {
+            if (n.getEscudo() == null) {
+                n.setHealth(Math.max(n.getHealth() - this.getAtaque().Atacar()+3, 0));
+            } else {
+                n.setHealth(Math.max(n.getHealth() - n.getEscudo().handlerRequest(this.getAtaque().Atacar()+3), 0));
+            }
+        }
+    }
+    
     public Inimigo() {
         super();
     }

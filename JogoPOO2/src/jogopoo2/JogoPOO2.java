@@ -104,7 +104,7 @@ public class JogoPOO2 {
         boneco[2] = sf.randomFabric();
         boneco[3] = sf.randomFabric();
         boneco[4] = sf.randomFabric();
-
+    
         for (int i = 0; i < 5; i++) {
             System.out.println(boneco[i].getClass() + " " + boneco[i].getAtaque().getClass());
         }
@@ -114,7 +114,9 @@ public class JogoPOO2 {
         System.out.println(robo.getClass());*/
         Front f = new Front();
         Personagem p = FactoryMedieval.getInstancia().createPersonagem();
-        Fase head = new Salao(p,1, 8, "Fase 1", new Saida(p,5, 10, "Fase 2"), new Saida(p,7, 8, "Fase 3"));
+        p.addFireball();p.addThunder();p.addIcepwd();
+        Fase head = new Saida(p,3, 8, "Fase 1");
+        //Fase head = new Salao(p,1, 8, "Fase 1", new Saida(p,5, 10, "Fase 2"), new Saida(p,7, 8, "Fase 3"));
         f.setFase(head);
         try {
             f.jogar(f);

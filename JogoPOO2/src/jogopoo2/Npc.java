@@ -48,7 +48,9 @@ public abstract class Npc {
     }
 
     public void setX(int x) {
-        this.x = Math.max(Math.min(x, 1024), 0);
+        if (sttHealth.getClass() != Morto.class) {
+            this.x = Math.max(Math.min(x, 1024), 0);
+        }
     }
 
     public int getY() {
@@ -56,7 +58,9 @@ public abstract class Npc {
     }
 
     public void setY(int y) {
-        this.y = Math.max(Math.min(y, 786), 0);
+        if (sttHealth.getClass() != Morto.class) {
+            this.y = Math.max(Math.min(y, 786), 0);
+        }
     }
 
     public Handler getEscudo() {
@@ -93,6 +97,7 @@ public abstract class Npc {
 
     public void setHealth(int health) {
         this.health = health;
+        this.getSttHealth().doBattle(this);
     }
 
     public IHealth getSttHealth() {
@@ -104,12 +109,14 @@ public abstract class Npc {
     }
 
     public void Atacar(Npc n) {
-        double dis = Math.sqrt(Math.pow(x - n.x, 2) + Math.pow(y - n.y, 2));
-        if (dis <= 1) {
-            if (n.escudo == null) {
-                n.setHealth(Math.max(n.getHealth() - this.ataque.Atacar(), 0));
-            } else {
-                n.setHealth(Math.max(n.getHealth() - n.escudo.handlerRequest(this.ataque.Atacar()), 0));
+        if (this.sttHealth.getClass() != Morto.class) {
+            double dis = Math.sqrt(Math.pow(x - n.x, 2) + Math.pow(y - n.y, 2));
+            if (dis <= 10) {
+                if (n.escudo == null) {
+                    n.setHealth(Math.max(n.getHealth() - this.ataque.Atacar(), 0));
+                } else {
+                    n.setHealth(Math.max(n.getHealth() - n.escudo.handlerRequest(this.ataque.Atacar()), 0));
+                }
             }
         }
     }

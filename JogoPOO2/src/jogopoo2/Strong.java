@@ -11,7 +11,7 @@ public class Strong implements IHealth {
     }
 
     @Override
-    public void doBattle(Personagem p) {
+    public void doBattle(Npc p) {
         if (p.getHealth() < 70) {
             p.setSttHealth(Mediano.getInstace());
         } else if (p.getHealth() <= 30) {

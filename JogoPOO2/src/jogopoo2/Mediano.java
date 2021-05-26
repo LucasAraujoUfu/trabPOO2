@@ -9,7 +9,7 @@ public class Mediano implements IHealth {
     }
     
     @Override
-    public void doBattle(Personagem p) {
+    public void doBattle(Npc p) {
         if (p.getHealth() > 70) {
             p.setSttHealth(Strong.getInstace());
 

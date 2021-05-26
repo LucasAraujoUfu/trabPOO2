@@ -35,12 +35,7 @@ public abstract class Personagem extends Npc implements Subject {
     public Personagem(Atacar ataque, Pular pulo, Correr corre) {
         super(ataque, pulo, corre);
         this.inimigo = new ArrayList<>();
-    }
-
-    @Override
-    public void setHealth(int health) {
-        super.setHealth(health);
-        super.getSttHealth().doBattle(this);
+    
     }
 
     @Override

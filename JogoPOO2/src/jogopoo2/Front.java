@@ -44,8 +44,14 @@ public class Front extends JPanel {
             }
 
             if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-                for (Inimigo i : p.getInimigo()) {
-                    p.Atacar(i);
+                if (p.getInimigo().size() > 0) {
+                    for (Inimigo i : p.getInimigo()) {
+                        p.Atacar(i);
+                        System.out.println(i.getHealth());
+                        if (i.getSttHealth().getClass() == Morto.class) {
+                            p.getInimigo().remove(i);
+                        }
+                    }
                 }
             }
         }
