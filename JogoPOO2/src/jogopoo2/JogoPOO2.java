@@ -115,8 +115,10 @@ public class JogoPOO2 {
         Front f = new Front();
         Personagem p = FactoryMedieval.getInstancia().createPersonagem();
         p.addFireball();p.addThunder();p.addIcepwd();
-        Fase head = new Saida(p,3, 8, "Fase 1");
-        //Fase head = new Salao(p,1, 8, "Fase 1", new Saida(p,5, 10, "Fase 2"), new Saida(p,7, 8, "Fase 3"));
+        //Fase head = new Saida(p,2, 8, "Fase 1");
+        
+        Fase head = new Salao(p,1, 8, "Fase 1", new Saida(p,5, 10, "Fase 2"), new Saida(p,7, 8, "Fase 3"));
+        head.alocaInimigo();
         f.setFase(head);
         try {
             f.jogar(f);

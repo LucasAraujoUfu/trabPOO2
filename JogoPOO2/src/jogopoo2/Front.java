@@ -7,6 +7,7 @@ import java.awt.RenderingHints;
 import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Scanner;
 
 public class Front extends JPanel {
 
@@ -47,7 +48,7 @@ public class Front extends JPanel {
                 if (p.getInimigo().size() > 0) {
                     for (Inimigo i : p.getInimigo()) {
                         p.Atacar(i);
-                        System.out.println(i.getHealth());
+                        //System.out.println(i.getHealth());
                         if (i.getSttHealth().getClass() == Morto.class) {
                             p.getInimigo().remove(i);
                         }
@@ -110,6 +111,23 @@ public class Front extends JPanel {
         Personagem p = fase.getJogador();
 
         while (true) {
+            if(p.getInimigo().size() == 0 ){
+                if(fase.getClass() == Saida.class){
+                    System.out.println("GG Malandro");
+                    break;
+                }
+                int opc;
+                Scanner sc = new Scanner(System.in);
+                opc = sc.nextInt();
+                fase = fase.getNext().get(opc);
+                fase.alocaInimigo();
+            }
+            
+            if(p.getHealth() == 0){
+                System.out.println("Perdeu Play Boy");
+                break;
+            }
+            
             p.notifyObserver();
             game.repaint();
             Thread.sleep(50);
