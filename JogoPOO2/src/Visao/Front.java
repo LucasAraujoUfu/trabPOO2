@@ -1,4 +1,4 @@
-package jogopoo2;
+package Visao;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -8,6 +8,11 @@ import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Scanner;
+import jogopoo2.Fase;
+import jogopoo2.Inimigo;
+import jogopoo2.Morto;
+import jogopoo2.Personagem;
+import jogopoo2.Saida;
 
 public class Front extends JPanel {
 
@@ -124,7 +129,7 @@ public class Front extends JPanel {
             }
             
             if(p.getHealth() == 0){
-                System.out.println("Perdeu Play Boy");
+                System.out.println("Perdeu Play ");
                 break;
             }
             

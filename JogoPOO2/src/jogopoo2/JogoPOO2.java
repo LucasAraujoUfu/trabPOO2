@@ -1,5 +1,6 @@
 package jogopoo2;
 
+import Visao.Front;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
