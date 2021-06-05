@@ -19,16 +19,17 @@ public class Front extends JPanel {
 
     private Fase fase;
     private static Controle c;
+    private JLabel jl;
 
     public Front(Fase fase) {
         this.fase = fase;
         KeyListener listener = new MyKeyListener();
         c = new Controle();
-        c.setCommand(new MoverEsquerda(fase.getJogador()),0);
-        c.setCommand(new MoverDireita(fase.getJogador()),1);
-        c.setCommand(new MoverCima(fase.getJogador()),2);
-        c.setCommand(new MoverBaixo(fase.getJogador()),3);
-        c.setCommand(new Atacar(fase.getJogador()),4);
+        c.setCommand(new MoverEsquerda(fase.getJogador()), 0);
+        c.setCommand(new MoverDireita(fase.getJogador()), 1);
+        c.setCommand(new MoverCima(fase.getJogador()), 2);
+        c.setCommand(new MoverBaixo(fase.getJogador()), 3);
+        c.setCommand(new Atacar(fase.getJogador()), 4);
         addKeyListener(listener);
         setFocusable(true);
     }
@@ -56,6 +57,23 @@ public class Front extends JPanel {
 
             if (e.getKeyCode() == KeyEvent.VK_DOWN) {
                 c.pressionar(3);
+            }
+
+            if (e.getKeyCode() == KeyEvent.VK_2) {
+                if (jl.getText().equals("Deseja ir pra qual fase? 1 ou 2")) {
+                    fase = fase.getNext().get(1);
+                    fase.alocaInimigo();
+                    jl.setText("");
+
+                }
+            }
+
+            if (e.getKeyCode() == KeyEvent.VK_1) {
+                if (jl.getText().equals("Deseja ir pra qual fase? 1 ou 2")) {
+                    fase = fase.getNext().get(0);
+                    fase.alocaInimigo();
+                    jl.setText("");
+                }
             }
 
             if (e.getKeyCode() == KeyEvent.VK_SPACE) {
@@ -111,8 +129,8 @@ public class Front extends JPanel {
         JFrame frame = new JFrame("Arena");
 
         JLabel label = new JLabel();
-
-        label.setBounds(0, 0, x, y);
+        this.jl = label;
+        label.setBounds(450, 350, 500, 150);
 
         game.setLayout(null);
         game.add(label);
@@ -126,23 +144,22 @@ public class Front extends JPanel {
         Personagem p = fase.getJogador();
 
         while (true) {
-            if(p.getInimigo().size() == 0 ){
-                if(fase.getClass() == Saida.class){
-                    System.out.println("GG Malandro");
+            if (p.getInimigo().size() == 0) {
+                if (fase.getClass() == Saida.class) {
+                    label.setText("GG boy");
+                    label.setVisible(true);
                     break;
                 }
-                int opc;
-                Scanner sc = new Scanner(System.in);
-                opc = sc.nextInt();
-                fase = fase.getNext().get(opc);
-                fase.alocaInimigo();
+
+                label.setText("Deseja ir pra qual fase? 1 ou 2");
             }
-            
-            if(p.getHealth() == 0){
-                System.out.println("Perdeu Play ");
+     
+            if (p.getHealth() == 0) {
+                label.setText("Perdeu Playba ");
+                label.setVisible(true);
                 break;
             }
-            
+
             p.notifyObserver();
             game.repaint();
             Thread.sleep(50);
