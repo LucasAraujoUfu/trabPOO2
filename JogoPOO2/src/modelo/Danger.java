@@ -5,8 +5,8 @@ public class Danger implements IHealth {
     private static Danger danger;
 
     Danger(Npc n){
-        n.setAtaque(new Fraco());
-        n.setCorre(new Devagar());
+        n.setAtaque(Fraco.getInstance());
+        n.setCorre(Devagar.getInstance());
         //n.setPulo(new Baixo());
     }
     

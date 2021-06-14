@@ -5,6 +5,7 @@ import java.util.Random;
 public class AdvancedFactory extends SimpleFactory{
 
     private static AdvancedFactory advancedFactory;
+    
     @Override
     public Personagem fabricar() {
         return null;

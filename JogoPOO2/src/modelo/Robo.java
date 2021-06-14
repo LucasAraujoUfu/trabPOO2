@@ -11,7 +11,7 @@ public class Robo extends Personagem {
     }
 
     public Robo() {
-        super(new Forte(), new Baixo(), new Rapido());
+        super(Forte.getInstance(), Baixo.getInstance(),Rapido.getInstance());
 
     }
 }

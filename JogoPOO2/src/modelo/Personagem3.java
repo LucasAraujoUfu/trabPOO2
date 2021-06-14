@@ -4,13 +4,13 @@ package modelo;
 public class Personagem3 extends Personagem {
 
      public Personagem3() {
-        super(new Forte (), new Baixo(), new Rapido());
+        super(Forte.getInstance(), Baixo.getInstance(), Rapido.getInstance());
     }
     
     @Override
     public void realoca() {
-        this.setAtaque(new Forte());
-        this.setCorre(new Rapido());
-        this.setPulo(new Baixo());
+        this.setAtaque(Forte.getInstance());
+        this.setCorre(Rapido.getInstance());
+        this.setPulo(Baixo.getInstance());
     }
 }

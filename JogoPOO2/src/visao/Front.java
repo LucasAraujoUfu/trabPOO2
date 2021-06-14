@@ -6,7 +6,6 @@ import java.awt.Graphics2D;
 import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.Scanner;
 
 import controle.*;
 import modelo.Fase;
@@ -21,7 +20,7 @@ public class Front extends JPanel {
     private static Controle c;
     private JLabel jl;
 
-    public Front(Fase fase) {
+    public Front(Fase fase,Combo a,Combo b,Combo d) {
         this.fase = fase;
         KeyListener listener = new MyKeyListener();
         c = new Controle();
@@ -30,6 +29,10 @@ public class Front extends JPanel {
         c.setCommand(new MoverCima(fase.getJogador()), 2);
         c.setCommand(new MoverBaixo(fase.getJogador()), 3);
         c.setCommand(new Atacar(fase.getJogador()), 4);
+        c.setCommand(new Pular(fase.getJogador()), 5);
+        c.setCommand(a, 6);
+        c.setCommand(b, 7);
+        c.setCommand(d, 8);
         addKeyListener(listener);
         setFocusable(true);
     }
@@ -59,6 +62,22 @@ public class Front extends JPanel {
                 c.pressionar(3);
             }
 
+            if(e.getKeyCode() == KeyEvent.VK_Z){
+                c.pressionar(5);
+            }
+            
+            if(e.getKeyCode() == KeyEvent.VK_X){
+                c.pressionar(6);
+            }
+            
+            if(e.getKeyCode() == KeyEvent.VK_C){
+                c.pressionar(7);
+            }
+            
+            if(e.getKeyCode() == KeyEvent.VK_V){
+                c.pressionar(8);
+            }
+            
             if (e.getKeyCode() == KeyEvent.VK_2) {
                 if (jl.getText().equals("Deseja ir pra qual fase? 1 ou 2")) {
                     fase = fase.getNext().get(1);
@@ -88,6 +107,7 @@ public class Front extends JPanel {
                     }
                 }
             }
+            
         }
 
         @Override
@@ -96,6 +116,7 @@ public class Front extends JPanel {
         }
     }
 
+    @Override
     public void paint(Graphics g) {
         super.paint(g);
         Personagem p = fase.getJogador();

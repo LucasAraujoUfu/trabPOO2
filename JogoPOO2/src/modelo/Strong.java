@@ -5,8 +5,8 @@ public class Strong implements IHealth {
     private static Strong strong;
 
     Strong(Npc n){
-        n.setAtaque(new Forte());
-        n.setCorre(new Rapido());
+        n.setAtaque(Forte.getInstance());
+        n.setCorre(Rapido.getInstance());
         //n.setPulo(new Alto());
     }
 

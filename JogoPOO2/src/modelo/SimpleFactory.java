@@ -1,3 +1,4 @@
+
 package modelo;
 
 import java.util.Random;
@@ -9,7 +10,7 @@ public abstract class SimpleFactory {
     public Personagem randomFabric() {
         Random random = new Random();
         double N = random.nextDouble();
-        SimpleFactory simpleFactory = null;
+        SimpleFactory simpleFactory;
         if (N <= 0.2) {
             simpleFactory = FabricaP1.getInstacia();
         } else if (N <= 0.4) {

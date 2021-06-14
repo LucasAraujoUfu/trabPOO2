@@ -23,6 +23,7 @@ public class Salao implements Fase {
     private Personagem jogador;
     private String nome;
 
+    @Override
     public void alocaInimigo() {
         for (int i = 0; i < nmrInimigo; i++) {
             jogador.registerObserver(new Inimigo(this.deslocamento));
@@ -31,6 +32,7 @@ public class Salao implements Fase {
     private int nmrInimigo;
     private int deslocamento;
 
+    @Override
     public List<Fase> getNext() {
         return next;
     }
@@ -39,18 +41,22 @@ public class Salao implements Fase {
         this.next = next;
     }
 
+    @Override
     public Personagem getJogador() {
         return jogador;
     }
 
+    @Override
     public void setJogador(Personagem jogador) {
         this.jogador = jogador;
     }
 
+    @Override
     public String getNome() {
         return nome;
     }
 
+    @Override
     public void setNome(String nome) {
         this.nome = nome;
     }

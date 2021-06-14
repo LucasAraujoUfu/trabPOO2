@@ -4,6 +4,8 @@ import visao.Front;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import controle.*;
+
 public class JogoPOO2 {
 
     public static void main(String[] args) {
@@ -119,7 +121,23 @@ public class JogoPOO2 {
         
         Fase head = new Salao(p,1, 8, "Fase 1", new Saida(p,5, 10, "Fase 2"), new Saida(p,7, 8, "Fase 3"));
         head.alocaInimigo();
-        Front f = new Front(head);
+        Combo a = new Combo();
+        a.addComando(new controle.Atacar(p));
+        a.addComando(new controle.Atacar(p));
+        a.addComando(new controle.Atacar(p));
+        a.addComando(new controle.Atacar(p));
+        
+        Combo b = new Combo();
+        b.addComando(new MoverEsquerda(p));
+        b.addComando(new MoverCima(p));
+        b.addComando(new MoverCima(p));
+        
+        Combo c = new Combo();
+        c.addComando(new MoverDireita(p));
+        c.addComando(new MoverBaixo(p));
+        c.addComando(new MoverBaixo(p));
+        
+        Front f = new Front(head,a,b,c);
         try {
             f.jogar(f);
         } catch (InterruptedException ex) {

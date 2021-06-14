@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Controle
 {
-    private Command[] c = new Command[6];
+    private Command[] c = new Command[10];
     private ArrayList<Command> log = new ArrayList<Command>();
 
     public void setCommand(Command c, int i){

@@ -3,6 +3,7 @@ package modelo;
 public class FabricaP3 extends SimpleFactory{
 
     private static FabricaP3 advancedFactory;
+    
     @Override
     public Personagem fabricar() {
         return new Personagem3();

@@ -22,9 +22,9 @@ public abstract class Npc {
     public Npc() {
         Random ram = new Random();
         this.health = 70;
-        this.ataque = new Intermediario();
-        this.pulo = new Medio();
-        this.corre = new Normal();
+        this.ataque = Intermediario.getInstance();
+        this.pulo = Medio.getInstance();
+        this.corre = Normal.getInstance();
         this.sttHealth = new Mediano(this);
         this.escudo = null;
         this.setX(ram.nextInt() % 1024);
@@ -122,7 +122,7 @@ public abstract class Npc {
     }
 
     public void Pular() {
-        this.pulo.Pular();
+        this.pulo.Pular(this);
     }
 
     public void Correr() {

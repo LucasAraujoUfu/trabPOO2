@@ -6,7 +6,7 @@ public class FabricaGuerreiro extends SimpleFactory {
 
     @Override
     public Personagem fabricar() {
-        Guerreiro g = new Guerreiro(new Intermediario(), new Alto(), new Rapido());
+        Guerreiro g = new Guerreiro(Intermediario.getInstance(), Alto.getInstance(), Rapido.getInstance());
         return g;
     }
 
